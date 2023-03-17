@@ -1,14 +1,14 @@
 [features]
 seeds = false
 skip-lint = false
-[programs.localnet]
+[programs.devnet]
 saver_app = "AWqbiG9fJfryLxVu86Lhg1xayfSjrE4bVbXPwvmjwjwa"
 
 [registry]
 url = "https://api.apr.dev"
 
 [provider]
-cluster = "Localnet"
+cluster = "Devnet"
 wallet = "/Users/raider/.config/solana/id.json"
 
 [scripts]
