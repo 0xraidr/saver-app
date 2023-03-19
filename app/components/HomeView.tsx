@@ -3,6 +3,7 @@ import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 import Head from "next/head";
 import { FC, useEffect, useState } from "react";
 import { getSolBalance } from "../utils/solana";
+import Transact from "./Transact";
 // when ready to implement SaverApp Component below
 // import SaverApp from "./SaverApp";
 import WalletBalances from "./WalletBalances";
@@ -34,13 +35,13 @@ export const HomeView: FC = ({}) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <h1>
-          Welcome to <a href="">SaverApp!</a>
-        </h1>
-        <p className="text-3xl text: bg-red-500 font-bold">testing...</p>
+        <h1>Welcome to Scavv.</h1>
+        <p>testing...</p>
         <WalletMultiButton />
 
         {connected && <WalletBalances solBalance={solBalance} />}
+
+        <Transact />
       </main>
     </div>
   );

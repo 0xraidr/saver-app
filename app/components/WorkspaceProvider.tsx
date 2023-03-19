@@ -16,7 +16,7 @@ const WorkspaceContext = createContext({});
 interface WorkSpace {
   connection?: Connection;
   provider?: AnchorProvider;
-  coinflipProgram?: Program<SaverApp>;
+  saverAppProgram?: Program<SaverApp>;
 }
 
 const WorkspaceProvider = ({ children }: any) => {
@@ -26,12 +26,12 @@ const WorkspaceProvider = ({ children }: any) => {
   const provider = new AnchorProvider(connection, wallet, {});
   setProvider(provider);
 
-  const coinflipProgram = new Program(SaverAppIDL as Idl, PROGRAM_ID);
+  const saverAppProgram = new Program(SaverAppIDL as Idl, PROGRAM_ID);
 
   const workspace = {
     connection,
     provider,
-    coinflipProgram,
+    saverAppProgram,
   };
 
   return (
