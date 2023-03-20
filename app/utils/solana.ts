@@ -30,6 +30,22 @@ export async function getSolBalance(connection: Connection, wallet: PublicKey) {
   }
 }
 
+export async function getPiggyBalance(
+  connection: Connection,
+  wallet: PublicKey
+) {
+  let balance = 0;
+  try {
+    balance = await connection.getBalance(wallet, "confirmed");
+    balance = balance / LAMPORTS_PER_SOL;
+    console.log(`${wallet.toString()} balance: ${balance} SOL.`);
+  } catch (e) {
+    console.log(`error getting balance: `, e);
+  } finally {
+    return balance;
+  }
+}
+
 export interface TokenAccounts {
   mintAddress: string;
   quantity: number;

@@ -4,6 +4,7 @@ import {
   TransactionInstruction,
   Connection,
   clusterApiUrl,
+  LAMPORTS_PER_SOL,
 } from "@solana/web3.js";
 import { SaverApp } from "./saver_app";
 import { Program } from "@project-serum/anchor";
@@ -18,6 +19,8 @@ import { getSolBalance } from "./solana";
 
 // }
 
+export interface PiggyBankBalance {}
+
 export async function deposit(
   saverAppProgram: Program<SaverApp>,
   userPubkey: PublicKey,
@@ -29,7 +32,7 @@ export async function deposit(
   );
 
   const tx = await saverAppProgram.methods
-    .deposit(new BN(amount))
+    .deposit(new BN(amount * LAMPORTS_PER_SOL))
     .accounts({
       signer: userPubkey,
       escrow: piggyBank,
@@ -56,7 +59,7 @@ export async function withdraw(
     saverAppProgram.programId
   );
   const tx = await saverAppProgram.methods
-    .deposit(new BN(amount))
+    .withdraw(new BN(amount * LAMPORTS_PER_SOL))
     .accounts({
       signer: userPubkey,
       escrow: piggyBank,
